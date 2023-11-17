@@ -2,7 +2,7 @@ import { View, Text, TextInput, ScrollView, Pressable, Platform } from 'react-na
 import React, { useContext, useState } from 'react'
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { PostContext } from '../context/postContext';
+import { CategoriesContext } from '../context/postContext';
 import FooterMenu from '../components/Menus/FooterMenu';
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import axios from "axios";
@@ -10,7 +10,7 @@ import axios from "axios";
 const Post = ({navigation}:any) => {
     /* Global state */
     const { t } = useTranslation();
-    const [posts, setPosts]: any = useContext(PostContext);
+    const [posts, setPosts]: any = useContext(CategoriesContext);
 
     /* Local state */
     const [title,setTitle] = useState('')

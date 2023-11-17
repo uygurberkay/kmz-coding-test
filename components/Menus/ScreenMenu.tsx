@@ -7,11 +7,14 @@ import Home from '../../screens/Home';
 import Login from '../../screens/auth/Login';
 import Register from '../../screens/auth/Register';
 import LanguageSelector from '../LanguageSelector';
-import HeaderMenu from './HeaderMenu';
+import HeaderMenu from './HeaderRightMenu';
+import HeaderLeftMenu from './HeaderLeftMenu';
 import Post from '../../screens/Post';
 import About from '../../screens/About';
 import Account from '../../screens/Account';
 import MyPosts from '../../screens/MyPosts';
+import HeaderImage from '../HeaderImage';
+import HeaderRightMenu from './HeaderRightMenu';
 
 const ScreenMenu = () => {
     /* Global state */
@@ -21,6 +24,7 @@ const ScreenMenu = () => {
     const authenticatedUser =state?.data?.token
 
     const Stack = createNativeStackNavigator()
+
     return (
         <>
             <Stack.Navigator initialRouteName={'Login'}>
@@ -28,38 +32,48 @@ const ScreenMenu = () => {
                 <>
                     <Stack.Screen 
                         name="Home" 
-                        component={Home} 
+                        component={Home}
                         options={{
-                            title: 'HappenHub',
-                            headerRight: () => <HeaderMenu/>
+                            title: '',
+                            headerBackground: () => (<HeaderImage/>),                            // headerTitle(props) {
+                            headerRight: () => <HeaderRightMenu/>,
+                            headerLeft: () => <HeaderLeftMenu/>,
                         }}/>
                     <Stack.Screen 
                         name="Search" 
                         component={Post} 
                         options={{
-                            headerBackTitle: 'Back',
-                            headerRight: () => <HeaderMenu/>
+                            title: '',
+                            headerBackground: () => (<HeaderImage/>),                            // headerTitle(props) {
+                            headerRight: () => <HeaderRightMenu/>,
+                            headerLeft: () => <HeaderLeftMenu/>,
                         }}/>
                     <Stack.Screen 
                         name="Basket" 
                         component={About} 
                         options={{
-                            headerBackTitle: 'Back',
-                            headerRight: () => <HeaderMenu/>
+                            title: '',
+                            headerBackground: () => (<HeaderImage/>),                            // headerTitle(props) {
+                            headerRight: () => <HeaderRightMenu/>,
+                            headerLeft: () => <HeaderLeftMenu/>,
                         }}/>
                     <Stack.Screen 
                         name="Discount" 
                         component={MyPosts} 
                         options={{
-                            headerBackTitle: 'Back',
-                            headerRight: () => <HeaderMenu/>
+                            title: '',
+                            headerBackground: () => (<HeaderImage/>),                            // headerTitle(props) {
+                            headerRight: () => <HeaderRightMenu/>,
+                            headerLeft: () => <HeaderLeftMenu/>,
                         }}/>
                     <Stack.Screen 
                         name="Account" 
                         component={Account} 
                         options={{
-                            headerBackTitle: 'Back',
-                            headerRight: () => <HeaderMenu/>
+                            title: '',
+                            headerBackground: () => (<HeaderImage/>),                            // headerTitle(props) {
+                            headerRight: () => <HeaderRightMenu/>,
+                            headerLeft: () => <HeaderLeftMenu/>,
                         }}/>
                     {/* <Stack.Screen 
                         name="Language" 

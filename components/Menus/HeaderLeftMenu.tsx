@@ -6,27 +6,27 @@ import {
 } from 'react-native'
 import React, { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Feather from 'react-native-vector-icons/Feather';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
-const HeaderMenu = () => {
-    const { t } = useTranslation()
+const HeaderLeftMenu = () => {
+    const navigation = useNavigation();
+    const { t } = useTranslation();
     const [state, setState]: any = useContext(AuthContext);
 
     /* Logout */
-    const handleLogout = async () => {
-        setState({token: '', user: null});
-        await AsyncStorage.removeItem('@auth');
-        alert(t('Logout Successful'))
+    const categoriesPopup = async () => {
+        navigation.navigate('Basket')
     }
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={handleLogout}>
-                <FontAwesome5 
-                    name='sign-out-alt' 
-                    style={{...styles.iconStyle, color: 'red'}} 
+            <Pressable onPress={categoriesPopup}>
+                <Feather 
+                    name='list' 
+                    style={{...styles.iconStyle, color: '#df4c08'}} 
                 />
             </Pressable>
         </View>
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeaderMenu
+export default HeaderLeftMenu

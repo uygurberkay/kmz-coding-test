@@ -14,37 +14,38 @@ const FooterMenu = () => {
     const { t } = useTranslation()
     const navigation = useNavigation<NavigationProp<any>>();
     const route = useRoute();
-    console.log(route)
+
     return (
         <View style={styles.container}>
             <Pressable onPress={() => navigation.navigate('Home')}>
                 <FontAwesome5 
                     name='home' 
-                    style={styles.iconStyle}
+                    style={{...styles.iconStyle, paddingTop: 18}}
                     color={route.name === 'Home' ? 'yellow': 'white'}/>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('Post')}>
+            <Pressable onPress={() => navigation.navigate('Search')}>
                 <FontAwesome5 
                     name='search' 
-                    style={styles.iconStyle} 
+                    style={{...styles.iconStyle, paddingTop: 18}} 
                     color={route.name === 'Search' ? 'yellow': 'white'}/>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('About')}>
+            <Pressable onPress={() => navigation.navigate('Basket')}>
+                <Text>48.50 TL</Text>
                 <FontAwesome5 
                     name='shopping-basket' 
                     style={styles.iconStyle}
-                    color={route.name === 'About' ? 'orange': 'white'}/>
+                    color={route.name === 'Basket' ? 'orange': 'white'}/>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('MyPosts')}>
+            <Pressable onPress={() => navigation.navigate('Discount')}>
                 <Ionicons
                     name='pricetags-outline' 
-                    style={styles.iconStyle}
-                    color={route.name === 'MyPosts' ? 'yellow': 'white'}/>
+                    style={{...styles.iconStyle, paddingTop: 18}}
+                    color={route.name === 'Discount' ? 'yellow': 'white'}/>
             </Pressable>
             <Pressable onPress={() => navigation.navigate('Account')}>
                 <FontAwesome5 
                     name='user-circle' 
-                    style={styles.iconStyle}
+                    style={{...styles.iconStyle, paddingTop: 18}}
                     color={route.name === 'Account' ? 'yellow': 'white'}/>
             </Pressable>
             {/* <Pressable onPress={() => navigation.navigate('Language')}>
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         padding: 10,
+        marginBottom: 30,
         justifyContent: 'space-between',
         backgroundColor: '#df4c08',
     },

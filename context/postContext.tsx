@@ -3,10 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 /* Context */
-const PostContext = createContext()
+const CategoriesContext = createContext()
 
 /* Provider */
-const PostProvider = ({children} : any) => {
+const CategoriesProvider = ({children} : any) => {
     /* Global states */
     const [loading, setLoading] = useState<boolean>(false);
     const [posts, setPosts] = useState([]);
@@ -15,10 +15,9 @@ const PostProvider = ({children} : any) => {
     const getAllPosts = async () => {
         setLoading(true)    
         try {
-            const {data} = await axios.get('/post/get-all-post')
+            const {data} = await axios.get('/ad/product/categories')
             setLoading(false)
-            setPosts(data?.posts)
-            console.log(data)
+            setPosts(data?.data?.categories)
         } catch (error) {
             console.log(error)
             setLoading(false)
@@ -31,10 +30,10 @@ const PostProvider = ({children} : any) => {
     }, [])
 
     return (
-        <PostContext.Provider value={[posts, setPosts]}>
+        <CategoriesContext.Provider value={[posts, setPosts]}>
             {children}
-        </PostContext.Provider>    
+        </CategoriesContext.Provider>    
     )
 }
 
-export {PostContext, PostProvider}
+export {CategoriesContext, CategoriesProvider}
